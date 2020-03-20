@@ -1,0 +1,12 @@
+.essay {
+  margin: 0.5rem;
+}
+
+.essay .title {
+  font-size: 22px;
+}
+.essay textarea {
+  width: 90vw;
+  font-size: 22px;
+  padding: 0.5rem;
+}

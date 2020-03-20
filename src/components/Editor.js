@@ -2,9 +2,9 @@ import React from "react";
 
 import { Timer } from "./Timer";
 import { WordCount } from "./SFComponents";
-import "./Essay.css";
+import "./Editor.css";
 
-export class Essay extends React.Component {
+export class Editor extends React.Component {
   constructor() {
     super();
     this.state = {
@@ -23,11 +23,11 @@ export class Essay extends React.Component {
           <WordCount data={this.state.editorValue} />
         </div>
         <textarea
-          class="editor-input"
+          className="editor-input"
           style={styles}
           placeholder="Write here..."
           autoComplete="off"
-          spellcheck="false"
+          spellCheck="false"
           onChange={this.handleEdit}
         ></textarea>
       </div>

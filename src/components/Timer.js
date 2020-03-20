@@ -11,14 +11,17 @@ export class Timer extends React.Component {
   }
   render() {
     const formattedTime = this.getFormattedTime(this.state.seconds);
+    const startButtonText = this.state.seconds > 0 ? "Restart" : "Start";
     return (
-      <div class="timer">
+      <div className="timer">
         <div className="timer-value-container">
           <span>Timer:&nbsp;</span>
-          <span className="timer-value"> {formattedTime}</span>
+          <span className="timer-value">
+            <b>{formattedTime}</b>
+          </span>
         </div>
-        <span class="timer-controls">
-          <button onClick={this.startTimer}>Start</button>
+        <span className="timer-controls">
+          <button onClick={this.startTimer}>{startButtonText}</button>
           <button onClick={this.resetTimer}>Reset</button>
         </span>
       </div>

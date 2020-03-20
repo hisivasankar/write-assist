@@ -1,7 +1,15 @@
 import React from "react";
 
+const regex = /(\s\s+)|(\n)/g;
+
 export const WordCount = ({ data = "" }) => {
-  const content = data.trim();
-  const count = !!content ? content.split(" ").length : 0;
-  return <span className="word-count">Word Count: {count}</span>;
+  let content = data.trim();
+  content = content.replace(regex, " ");
+  const words = !!content ? content.split(" ") : [];
+  const count = words.length;
+  return (
+    <span className="word-count">
+      Word Count: <b>{count}</b>
+    </span>
+  );
 };

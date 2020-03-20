@@ -1,16 +1,31 @@
 import React from "react";
 import "./App.css";
 
-import { Essay } from "./components/Essay";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+
+import { Editor } from "./components/Editor";
+import { AppHeader, Essays, Insights } from "./components";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header"></header>
+    <Router>
       <div>
-        <Essay />
+        <AppHeader />
+        {/* A <Switch> looks through its children <Route>s and
+        renders the first one that matches the current URL. */}
+        <Switch>
+          <Route path="/essays">
+            <Essays />
+          </Route>
+          <Route path="/insights">
+            <Insights />
+          </Route>
+          <Route path="/">
+            <Editor />
+          </Route>
+        </Switch>
       </div>
-    </div>
+    </Router>
   );
 }
 
