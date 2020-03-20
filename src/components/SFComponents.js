@@ -1,7 +1,7 @@
 import React from "react";
 
-export const WordCount = ({ data }) => {
+export const WordCount = ({ data = "" }) => {
   const content = data.trim();
-  const count = content.split(" ").length;
+  const count = !!content ? content.split(" ").length : 0;
   return <span className="word-count">Word Count: {count}</span>;
 };
