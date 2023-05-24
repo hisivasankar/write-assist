@@ -91,7 +91,7 @@ export default function Page() {
   const [question, setQuestion] = useState("");
   const [answer, setAnswer] = useState("");
   return (
-    <main className="w-full h-screen md:grid md:grid-cols-12 md:gap-4">
+    <div className="w-full h-screen md:grid md:grid-cols-12 md:gap-4">
       <div className="md:col-span-10 flex flex-col gap-2 mt-10 mb-20">
         <div className="flex flex-col gap-4">
           <Question question={question} onChange={setQuestion} />
@@ -103,6 +103,6 @@ export default function Page() {
         <hr />
         <Insights answer={answer} />
       </aside>
-    </main>
+    </div>
   );
 }
