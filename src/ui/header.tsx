@@ -40,10 +40,10 @@ export default function Header() {
               </li>
               <li
                 className={classnames({
-                  underline: pathname === "/write",
+                  underline: pathname === "/practice",
                 })}
               >
-                <Link href={"/write"}>Write</Link>
+                <Link href={"/practice"}>Practice</Link>
               </li>
               <li
                 className={classnames({

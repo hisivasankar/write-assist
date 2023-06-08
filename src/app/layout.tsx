@@ -1,7 +1,7 @@
-import Header from "@/components/header";
+import Header from "@/ui/header";
 import "./globals.css";
 import { Inter } from "next/font/google";
-import { TailwindIndicator } from "@/components/tailwind-indicator";
+import { TailwindIndicator } from "@/ui/tailwind-indicator";
 
 const inter = Inter({ subsets: ["latin"] });
 

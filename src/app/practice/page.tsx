@@ -2,14 +2,23 @@
 
 import { useState } from "react";
 
-import Timer from "@/components/timer";
-import { WordCount } from "@/components/word-count";
-import Button from "@/components/button";
+import Timer from "@/ui/timer";
+import { WordCount } from "@/ui/word-count";
+import Button from "@/ui/button";
 
 interface QueuestionProps {
   question: string;
   onChange: Function;
 }
+
+const getRandomQuestion = async () => {
+  const response = await fetch("/api/question/random");
+  if (!response.ok) {
+    // This will activate the closest `error.js` Error Boundary
+    throw new Error("Failed to fetch data");
+  }
+  return response.json();
+};
 
 const Question = (props: QueuestionProps) => {
   return (
@@ -60,13 +69,23 @@ const Answer = (props: AnswerProps) => {
   );
 };
 
-const Actions = () => {
+interface ActionProps {
+  onQuestionChange: Function;
+}
+
+const Actions = (props: ActionProps) => {
   return (
     <div className="flex flex-col gap-4">
       <h2 className="text-xl">Actions</h2>
       <div className="flex flex-col gap-4">
         <label htmlFor="">Select a question type</label>
-        <Button>Get a random question</Button>
+        <Button
+          onClick={() => {
+            props.onQuestionChange();
+          }}
+        >
+          Get a random question
+        </Button>
       </div>
       <div>
         <Timer />
@@ -99,7 +118,12 @@ export default function Page() {
         </div>
       </div>
       <aside className="flex flex-col gap-4 md:col-span-2 mt-10 w-1/2 md:w-full">
-        <Actions />
+        <Actions
+          onQuestionChange={async () => {
+            const response = await getRandomQuestion();
+            setQuestion(response.question);
+          }}
+        />
         <hr />
         <Insights answer={answer} />
       </aside>

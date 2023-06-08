@@ -1,5 +1,3 @@
-import { ButtonHTMLAttributes } from "react";
-
 export default function Button(props: any) {
   const { children, ...otherProps } = props;
   return (
