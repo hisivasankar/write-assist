@@ -1,3 +1,4 @@
+import { NextResponse } from "next/server";
 import { PrismaClient } from "@prisma/client";
 
 async function getRandomQuestion() {
@@ -16,6 +17,8 @@ async function getRandomQuestion() {
   return questions[0];
 }
 
+export const revalidate = 30;
+
 export async function GET(request: Request, response: Response) {
-  return new Response(JSON.stringify(await getRandomQuestion()));
+  return NextResponse.json(await getRandomQuestion());
 }

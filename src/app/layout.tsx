@@ -18,7 +18,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className + " max-h-screen"}>
+      <body className={inter.className + " max-h-screen text-lg"}>
         <Header />
         {children}
         <TailwindIndicator />

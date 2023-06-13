@@ -3,6 +3,8 @@
 import React, { useState, useEffect } from "react";
 import Button from "./button";
 
+import { Timer, TimerOff, TimerReset } from "lucide-react";
+
 const getFormattedTime = (time: number) => {
   // Hours, minutes and seconds
   var hrs = ~~(time / 3600);
@@ -26,11 +28,11 @@ enum TimerState {
   Off,
 }
 
-export default function Timer() {
+export default function TimerControl() {
   const [seconds, setSeconds] = useState(0);
   const [active, setActive] = useState(false);
 
-  const startButtonText = active ? "Stop Timer" : "Start Timer";
+  const startButtonText = active ? "Stop" : "Start";
 
   const toggle = () => {
     console.log("Toggle timer", active);
@@ -65,16 +67,20 @@ export default function Timer() {
   const formattedTime = getFormattedTime(seconds);
 
   return (
-    <div className="">
+    <div className="flex flex-col gap-4">
       <div className="">
         <span>Timer:&nbsp;</span>
         <span className="">
           <b>{formattedTime}</b>
         </span>
       </div>
-      <div className="flex flex-col gap-2">
-        <Button onClick={toggle}>{startButtonText}</Button>
-        <Button onClick={reset}>Reset Timer</Button>
+      <div className="flex gap-2 items-center">
+        <Button onClick={toggle}>
+          {active ? <TimerOff /> : <Timer />} <span>{startButtonText}</span>
+        </Button>
+        <Button onClick={reset}>
+          <TimerReset /> <span>Reset</span>
+        </Button>
       </div>
     </div>
   );
